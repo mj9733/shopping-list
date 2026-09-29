@@ -50,4 +50,8 @@ AppTest로 확인할 수 없는 것들이 있다: `clear_on_submit`으로 입력
 - 프로젝트 경로에 한글이 있다(`바탕화면\쇼핑리스트`). 파일 입출력은 항상 `encoding="utf-8"`로 하고, JSON은 `ensure_ascii=False`로 저장한다.
 - 콘솔 기본 인코딩이 cp949라서 이모지나 일부 문자를 print하면 `UnicodeEncodeError`가 난다. 스크립트 출력을 확인할 때는 `PYTHONIOENCODING=utf-8`을 설정한다.
 - PowerShell 5.1의 `Set-Content -Encoding utf8`은 BOM을 붙인다. BOM이 붙은 `.streamlit/config.toml`은 Streamlit이 읽지 못하고 조용히 무시한다. 설정 파일은 Write 도구로 쓴다.
-- `.streamlit/config.toml`의 `server.address = "localhost"` 때문에 로컬 서버는 이 PC에서만 접속된다.
+- `.streamlit/config.toml`의 `server.address = "localhost"` 때문에 로컬 서버는 이 PC에서만 접속된다. 이 파일은 로컬 전용이라 `.gitignore`에 들어 있고, 배포본에는 없다.
+
+## 배포
+
+GitHub `mj9733/shopping-list`(비공개, `main` 브랜치)를 Streamlit Community Cloud에 연결해 배포한다. `main`에 push하면 자동으로 다시 배포된다. 배포본은 로그인이 없어 모든 방문자가 목록 하나를 공유한다. `shopping_list.json`은 서버 컨테이너에만 있어서 앱이 재시작되거나 다시 배포되면 초기화될 수 있다(사용자가 알고 선택한 방식).
