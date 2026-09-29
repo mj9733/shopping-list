@@ -1,0 +1,11 @@
+# 실제 쇼핑 데이터와 백업 (배포 서버에서는 새로 만들어진다)
+shopping_list.json
+*.bak.json
+.*.tmp
+
+# 로컬 전용 설정: 서버를 localhost에서만 열기 (클라우드 배포에는 쓰지 않는다)
+.streamlit/config.toml
+
+__pycache__/
+.pytest_cache/
+.playwright-mcp/
